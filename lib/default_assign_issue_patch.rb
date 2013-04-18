@@ -21,7 +21,8 @@ module DefaultAssignIssuePatch
     # is set, set it.
     def assign_default_assignee
         @project=Project.find(self.project_id)
-        self.assigned_to_id ||= @project.default_assignee_id
+        self.assigned_to ||= @project.find_default_assignee
+
     end
   end
 end
